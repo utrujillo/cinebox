@@ -3,7 +3,7 @@ import Menu from '@/app/components/Menu'
 
 const PlantillaPrincipal = ({children}) => {
     return (
-        <section className='bg-[#2F3139] text-white h-screen relative'>
+        <section className='bg-[#2F3139] flex flex-col text-white h-screen'>
             <Menu />
             {children}
         </section>

@@ -18,7 +18,7 @@ const Busqueda = () => {
             <input 
                 type="text" 
                 placeholder="Introduce la pelicula a buscar" 
-                className='w-full ml-2 h-10 p-3 text-[#2F3139]' />
+                className='w-full ml-2 h-10 p-3 text-[#2F3139] focus:outline-none focus:ring-0' />
             
         </div>
     )
