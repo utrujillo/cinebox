@@ -16,6 +16,22 @@ export default function Home() {
 					: pelicula['photo_url'][0]
 	} )
 
+	const masonryItems = peliculas.map( (pelicula) => {
+		return categoriaBuscada === 'Peliculas'
+			? 	{
+					'imdb_id': pelicula['#IMDB_ID'],
+					'imagen': pelicula['#IMG_POSTER'],
+					'titulo': pelicula['#TITLE'],
+					'actores': pelicula['#ACTORS']
+				}
+			:	{
+					'imdb_id': pelicula['imdbId'],
+					'imagen': pelicula['photo_url'][0],
+					'titulo': pelicula['title'],
+					'actores': ''
+				}
+	} )
+
 	return (
 		<PlantillaPrincipal>
 			{
@@ -25,7 +41,7 @@ export default function Home() {
 						? <SinInformacion mensaje='Por favor, busca el elemento deseado' />
 						: <>
 							<Galeria images={images} />
-							<Masonry />
+							<Masonry masonryItems={masonryItems} />
 						</>
 			}
 			
