@@ -1,10 +1,12 @@
 'use client'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { AppContext } from '@/app/context/AppContext'
 import Image from "next/image"
 import lupa from '@/app/assets/icons/lupa.png'
 
 const Busqueda = () => {
 
+    const { setPeliculas } = useContext(AppContext)
     const [ buscar, setBuscar ] = useState('')
     const [ visible, setVisible ] = useState(false)
     const toggleInput = () => { setVisible(!visible) }
@@ -27,13 +29,11 @@ const Busqueda = () => {
             }
             // Procesar la respuesta JSON
             const data = await response.json()
-            console.log('Datos recibidos', data.description)
+            // Almacenar las peliculas en el contexto global
+            setPeliculas(data.description)
         } catch (error) {
             console.error('Error al realizar la peticion', error)
         }
-        
-
-        console.log(`Buscar en ${categoriaActiva} el nombre ${buscar}, ${baseURL}`)
     } 
 
     return (
