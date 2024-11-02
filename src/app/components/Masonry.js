@@ -49,7 +49,8 @@ const Masonry = (props) => {
                 {
                     masonryItems.map( (item) => (
                         <div className={`mb-4 break-inside-avoid h-48 rounded-3xl overflow-hidden relative`} key={item?.imdb_id}>
-                            <Image src={item?.imagen} alt='' fill className='z-0 object-cover' unoptimized />
+                            {/* <Image src={item?.imagen} alt='' fill className='z-0 object-cover' unoptimized /> */}
+                            <img src={item?.imagen} alt='' className='z-0 object-cover w-full h-full' />
                             <div 
                                 className="absolute bottom-0 bg-[#C8E5E4] opacity-80 h-16 w-full flex flex-col justify-center items-center text-[#2F3139] text-center cursor-pointer"
                                 onClick={ () => { 
@@ -71,7 +72,7 @@ const Masonry = (props) => {
                         ? <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#2F3139] animate-pulse'>Recuperando informacion...</div>
                         : detalle 
                             ? <InformacionModal categoriaBuscada={categoriaBuscada} detalle={detalle}/>
-                            : null
+                            : <></>
                 }
                 
             </Modal>

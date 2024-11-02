@@ -9,12 +9,9 @@ const InformacionModal = ({detalle}) => {
         'estreno': `${detalle?.top?.releaseDate?.day}-${detalle?.top?.releaseDate?.month}-${detalle?.top?.releaseDate?.year}`,
         'puntuacion': detalle?.short?.aggregateRating?.ratingValue
     }
-    
-    console.log('datos', datos)
 
     return (
         <>
-            {/* <p className='text-black'>Algo</p> */}
             <div className="h-96 w-full relative overflow-hidden">
                 <img src={datos?.imagen} alt='' className='z-0 object-cover w-full h-full' />
             </div>
