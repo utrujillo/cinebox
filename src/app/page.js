@@ -9,7 +9,12 @@ import { AppContext } from '@/app/context/AppContext'
 
 export default function Home() {
 
-	const { isLoading, peliculas } = useContext(AppContext)
+	const { isLoading, peliculas, categoriaBuscada } = useContext(AppContext)
+	const images = peliculas.map( (pelicula) => {
+		return categoriaBuscada === 'Peliculas' 
+					? pelicula['#IMG_POSTER']
+					: pelicula['photo_url'][0]
+	} )
 
 	return (
 		<PlantillaPrincipal>
@@ -19,7 +24,7 @@ export default function Home() {
 					: peliculas.length === 0 
 						? <SinInformacion mensaje='Por favor, busca el elemento deseado' />
 						: <>
-							<Galeria />
+							<Galeria images={images} />
 							<Masonry />
 						</>
 			}

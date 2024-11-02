@@ -6,7 +6,7 @@ import lupa from '@/app/assets/icons/lupa.png'
 
 const Busqueda = () => {
 
-    const { setPeliculas, isLoading, setIsLoading } = useContext(AppContext)
+    const { setPeliculas, setIsLoading, setCategoriaBuscada } = useContext(AppContext)
     const [ buscar, setBuscar ] = useState('')
     const [ visible, setVisible ] = useState(false)
     const toggleInput = () => { setVisible(!visible) }
@@ -32,6 +32,7 @@ const Busqueda = () => {
             const data = await response.json()
             // Almacenar las peliculas en el contexto global
             setPeliculas(data.description)
+            setCategoriaBuscada(categoriaActiva)
         } catch (error) {
             console.error('Error al realizar la peticion', error)
         }

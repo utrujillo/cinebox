@@ -5,14 +5,14 @@ import chevron_left from '@/app/assets/icons/chevron_left.png'
 import chevron_right from '@/app/assets/icons/chevron_right.png' 
 
 // Importa las imágenes directamente
-import gameOfThrones from '@/app/assets/images/gameOfThrones.png';
-import detailPicture from '@/app/assets/images/detailPicture.png';
-import image01 from '@/app/assets/images/image01.png';
+// import gameOfThrones from '@/app/assets/images/gameOfThrones.png';
+// import detailPicture from '@/app/assets/images/detailPicture.png';
+// import image01 from '@/app/assets/images/image01.png';
 
-const Galeria = () => {
-
+const Galeria = (props) => {
+    const { images } = props
     const [ indexActual, setIndexActual ] = useState(0)
-    let images = [ gameOfThrones, detailPicture, image01 ]
+    // let images = [ gameOfThrones, detailPicture, image01 ]
 
     const anterior = () => {
         setIndexActual( indexActual === 0 ? images.length - 1 : indexActual - 1)
@@ -39,6 +39,7 @@ const Galeria = () => {
                 alt=''
                 fill
                 className='z-0 object-cover'
+                unoptimized
             />
             <Image
                 aria-hidden
