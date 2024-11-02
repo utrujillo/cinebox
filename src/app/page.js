@@ -41,7 +41,7 @@ export default function Home() {
 						? <SinInformacion mensaje='Por favor, busca el elemento deseado' />
 						: <>
 							<Galeria images={images} />
-							<Masonry masonryItems={masonryItems} />
+							<Masonry categoriaBuscada={categoriaBuscada} masonryItems={masonryItems} />
 						</>
 			}
 			
