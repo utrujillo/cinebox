@@ -4,7 +4,7 @@ import SinInformacion from "@/app/components/SinInformacion"
 export default function Home() {
 	return (
 		<PlantillaPrincipal>
-			<SinInformacion />
+			<SinInformacion mensaje='Por favor, busca el elemento deseado' />
 		</PlantillaPrincipal>
 	)
 }
