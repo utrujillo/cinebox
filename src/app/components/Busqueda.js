@@ -6,7 +6,7 @@ import lupa from '@/app/assets/icons/lupa.png'
 
 const Busqueda = () => {
 
-    const { setPeliculas } = useContext(AppContext)
+    const { setPeliculas, isLoading, setIsLoading } = useContext(AppContext)
     const [ buscar, setBuscar ] = useState('')
     const [ visible, setVisible ] = useState(false)
     const toggleInput = () => { setVisible(!visible) }
@@ -16,6 +16,7 @@ const Busqueda = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setIsLoading(true)
         const baseURL = categoriaActiva === 'Series' 
                         ? 'https://imdb.iamidiotareyoutoo.com/justwatch?q='+buscar 
                         : 'https://imdb.iamidiotareyoutoo.com/search?q='+buscar
@@ -34,6 +35,7 @@ const Busqueda = () => {
         } catch (error) {
             console.error('Error al realizar la peticion', error)
         }
+        setIsLoading(false)
     } 
 
     return (
