@@ -12,10 +12,28 @@ const Busqueda = () => {
     let opciones = ['Peliculas', 'Series']
     const [ categoriaActiva, setCategoriaActiva ] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        const baseURL = categoriaActiva === 'Series' 
+                        ? 'https://imdb.iamidiotareyoutoo.com/justwatch?q='+buscar 
+                        : 'https://imdb.iamidiotareyoutoo.com/search?q='+buscar
         
-        console.log(`Buscar en ${categoriaActiva} el nombre ${buscar}`)
+        try {
+            // Realizamos la peticion a la API externa
+            const response = await fetch(baseURL)
+            // Verificamos si la respuesta es exitosa
+            if(!response.ok){
+                console.error(`Error en la solicitud: ${response.status}` )
+            }
+            // Procesar la respuesta JSON
+            const data = await response.json()
+            console.log('Datos recibidos', data.description)
+        } catch (error) {
+            console.error('Error al realizar la peticion', error)
+        }
+        
+
+        console.log(`Buscar en ${categoriaActiva} el nombre ${buscar}, ${baseURL}`)
     } 
 
     return (
@@ -55,7 +73,7 @@ const Busqueda = () => {
                             type="text" 
                             placeholder="Introduce la pelicula a buscar"
                             name="buscar"
-                            // defaultValue={buscar}
+                            defaultValue={buscar}
                             onChange={(e) => setBuscar( e.target.value )} 
                             className='w-full ml-2 h-10 p-3 text-[#2F3139] focus:outline-none focus:ring-0' />
                     </form>
